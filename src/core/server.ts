@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import * as http from 'http';
+import routesProviders from '../providers/routesProviders';
 
 
 export class Server {
@@ -18,14 +19,7 @@ export class Server {
         this.express.use(express.urlencoded({ extended: false }));
         this.express.use(express.json());
 
-        this.express.get('/', (req, res) => {
-            res.send('Hello World');
-        });
-    }
-
-
-    getHHTPServer(): Server['httpServer'] {
-        return this.httpServer;
+        this.express.use('/api', routesProviders);
     }
 
     async listen(): Promise<void> {
@@ -51,6 +45,10 @@ export class Server {
                 });
             }
         });
+    }
+
+    getHHTPServer(): Server['httpServer'] {
+        return this.httpServer;
     }
 }
 
