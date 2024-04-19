@@ -32,35 +32,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginController = void 0;
-const JsonResponse_1 = require("../../../shared/Utils/JsonResponse");
-const LoginCommand_1 = require("../application/LoginCommand"); // Add missing import statement
-class LoginController /* extends BaseController */ {
-    constructor(commandBus) {
-        this.commandBus = commandBus;
+exports.CommandBus = void 0;
+const Command_1 = require("./Command");
+class CommandBus {
+    execute(command) {
+        console.log('command', command);
+        this.getFile(command);
     }
-    static get(req, res) {
-        JsonResponse_1.JsonResponse.send(res, { data: 'Hello World from Login Module!' }, 'Login');
-    }
-    static login(req, res) {
-        const command = new LoginCommand_1.LoginCommand({
-            nombre: req.body.nombre,
-            password: req.body.password
-        });
-        const response = LoginController.process(command);
-        console.log('response', response);
-        // const response = LoginController.commandBus.execute(command);
-        JsonResponse_1.JsonResponse.send(res, { "data": req.body, "response": response }, 'Login');
-    }
-    static process(command) {
+    dispatch(command) {
         return __awaiter(this, void 0, void 0, function* () {
-            const nameClass = LoginCommand_1.LoginCommand.name + "Handler";
+            const name = command + "Handler";
+            const handler = new (yield Promise.resolve(`${`../../app/${name}`}`).then(s => __importStar(require(s))))[name]();
+            yield handler.run(command);
+        });
+    }
+    getFile(command) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const nameClass = Command_1.Command.name + "Handler";
             const file = yield Promise.resolve(`${`../application/${nameClass}`}`).then(s => __importStar(require(s))); // Remove unnecessary path
             const handler = new file[nameClass](); // Remove unnecessary path
-            const data = yield handler.run(command);
-            // console.log('data', data);
-            return data;
+            handler.run(command);
         });
     }
 }
-exports.LoginController = LoginController;
+exports.CommandBus = CommandBus;

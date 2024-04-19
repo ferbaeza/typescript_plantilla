@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = require("./core/app");
+const App_1 = require("./shared/Core/App");
 try {
-    new app_1.backendApp().start();
+    new App_1.backendApp().start();
 }
 catch (error) {
     console.log(error);
     process.exit(1);
 }
-process.on('unhandledRejection', (error) => {
-    console.log(error);
-    process.exit(1);
-});
+// process.on('unhandledRejection', (error) => {
+//     console.log(error);
+//     process.exit(1);
+// });

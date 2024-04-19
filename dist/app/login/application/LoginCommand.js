@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginCommand = void 0;
-const Command_1 = require("../../../shared/Domain/Command");
+const Command_1 = require("../../../shared/Bus/Domain/Command");
 const uuid_1 = require("uuid");
 class LoginCommand extends Command_1.Command {
     constructor(params) {
