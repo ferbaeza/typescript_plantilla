@@ -13,15 +13,15 @@ export class JsonResponse {
         res.status(HttpStatusCode.OK).json(response);
     }
 
-    public static error(res: any, error: any, message:string, module: string): void {
+    public static error(res: any, error: any, message: string, module: string, code: HttpStatusCode ): void {
         const response =
         {
             error,
             message,
             module,
-            "statusCode": HttpStatusCode.INTERNAL_SERVER_ERROR,
+            "statusCode": code ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
             success: false,
         };
-        res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json(response);
+        res.status(code ?? HttpStatusCode.INTERNAL_SERVER_ERROR).json(response);
     }
 }

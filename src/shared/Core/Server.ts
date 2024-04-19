@@ -4,6 +4,7 @@ import * as http from 'http';
 import express from 'express';
 import routesProviders from '../Providers/routesProviders';
 import homeRoute from '../Providers/homeRoute';
+import { dataBaseConnect } from '../Database/Config/DatabaseConnection';
 
 
 export class Server {
@@ -16,6 +17,7 @@ export class Server {
         this.express = express();
         this.middlewares()
         this.routes();
+        dataBaseConnect();
     }
 
     middlewares(): void {
