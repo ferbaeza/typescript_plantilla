@@ -2,10 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class BaseCommand {
     public createdAt: string;
-    public id: string ;
+    public commandId: string ;
     
     constructor() {
-        this.id = uuidv4();
+        this.commandId = uuidv4();
         this.createdAt = new Date().toString();
     }
 }

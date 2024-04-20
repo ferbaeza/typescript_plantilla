@@ -1,29 +1,24 @@
 import path from 'path';
 import { Request, Response } from "express";
-import { UsuarioRepository } from "../Datasource/UsuarioRepository";
 import { LoginCommand } from "../../../Login/Application/LoginCommand";
+import { HttpStatusCode } from '../../../../../../shared/Utils/HttpCodes';
 import { JsonResponse } from "../../../../../../shared/Utils/JsonResponse";
 import { BaseController } from "../../../../../../shared/Base/BaseController";
 import { LoginCommandHandler } from "../../../Login/Application/LoginCommandHandler";
-import { ListarUsuariosCommandHandler } from "../../../Lectura/ListarUsuariosCommandHandler";
-import { NoExistenUsuariosException } from '../../../../../../shared/Exceptions/Usuario/UsuarioHomeException';
-import { HttpStatusCode } from '../../../../../../shared/Utils/HttpCodes';
-import { CrearUsuarioCommand } from '../../../Escritura/CrearUsuarioCommand';
-import { CrearUsuarioCommandHandler } from '../../../Escritura/CrearUsuarioCommandHandler';
+import { CrearUsuarioCommand } from '../../../Escritura/CrearUsuario/Application/CrearUsuarioCommand';
+import { NoExistenUsuariosException, UsuarioYaExisteConEseIdException, UsuarioYaExisteConEseMailException } from '../../../../../../shared/Exceptions/Usuario/UsuarioException';
+import { CrearUsuarioCommandHandler } from '../../../Escritura/CrearUsuario/Application/CrearUsuarioCommandHandler';
+import { ListarUsuariosCommandHandler } from "../../../Lectura/ListarUsuarios/Application/ListarUsuariosCommandHandler";
 
 
 export class UsuariosController extends BaseController {
-    protected repository: UsuarioRepository;
-    protected loginCommandHandler: LoginCommandHandler;
-    protected listarUsuariosCommandHandler: ListarUsuariosCommandHandler;
-    protected crearUsuarioCommandHandler: CrearUsuarioCommandHandler;
 
-    constructor(repository: UsuarioRepository) {
+    constructor(
+        protected readonly listarUsuariosCommandHandler: ListarUsuariosCommandHandler,
+        protected readonly crearUsuarioCommandHandler: CrearUsuarioCommandHandler,
+        protected readonly loginCommandHandler: LoginCommandHandler,
+    ) {
         super();
-        this.repository = repository;
-        this.loginCommandHandler = new LoginCommandHandler();
-        this.listarUsuariosCommandHandler = new ListarUsuariosCommandHandler(this.repository);
-        this.crearUsuarioCommandHandler = new CrearUsuarioCommandHandler(this.repository);
     }
 
     public async listar(request: Request, response: Response): Promise<any> {
@@ -41,14 +36,21 @@ export class UsuariosController extends BaseController {
 
     public async crearUsuario(request: Request, response: Response): Promise<any> {
         try {
-            const {nombre, email , password} = request.body;
-            const command = new CrearUsuarioCommand(nombre, email, password);
-            const response = await this.crearUsuarioCommandHandler.run(command);
-            JsonResponse.send(response, response, path.basename(__filename));
+            const { id, nombre, email, password } = request.body;
+
+            const command = new CrearUsuarioCommand(id, nombre, email, password);
+            const data = await this.crearUsuarioCommandHandler.run(command);
+            JsonResponse.send(response, data, path.basename(__filename));
 
         } catch (error) {
             if (error instanceof NoExistenUsuariosException) {
                 JsonResponse.error(response, error, error.message, path.basename(__filename), HttpStatusCode.NO_CONTENT);
+            }
+            if (error instanceof UsuarioYaExisteConEseMailException) {
+                JsonResponse.error(response, error, error.message, path.basename(__filename), HttpStatusCode.BAD_REQUEST);
+            }
+            if (error instanceof UsuarioYaExisteConEseIdException) {
+                JsonResponse.error(response, error, error.message, path.basename(__filename), HttpStatusCode.BAD_REQUEST);
             }
         }
     }

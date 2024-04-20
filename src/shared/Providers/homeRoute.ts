@@ -2,7 +2,7 @@ import path from 'path';
 import { Router } from "express";
 import { JsonResponse } from "../Utils/JsonResponse";
 import { UsuarioBaseException } from '../Exceptions/Usuario/UsuarioBaseException';
-import { UsuarioHomeException } from '../Exceptions/Usuario/UsuarioHomeException';
+import { UsuarioHomeException } from '../Exceptions/Usuario/UsuarioException';
 import { HttpStatusCode } from '../Utils/HttpCodes';
 
 const homeRoute = Router();
