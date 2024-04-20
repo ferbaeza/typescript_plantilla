@@ -2,11 +2,11 @@ import { HttpStatusCode } from "./HttpCodes";
 
 
 export class JsonResponse {
-    public static send(res: any, data: any, module:string): void {
+    public static send(res: any, data: any, mensaje:string): void {
         const response = 
         {
             data, 
-            module,
+            mensaje,
             "statusCode": HttpStatusCode.OK, 
             success: true,
         };

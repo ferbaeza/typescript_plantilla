@@ -1,4 +1,4 @@
-import { UsuariosModel } from "../../../../../../shared/Database/Squelize/Usuarios/UsuariosModel";
+import { UsuariosModel } from "../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel";
 import { UsuariosListadoEntity } from "../../ListarUsuarios/Domain/UsuariosListadoEntity";
 import { UsuariosLecturaPublicRepositoryInterface } from "../Domain/Interfaces/UsuariosLecturaPublicRepositoryInterface";
 

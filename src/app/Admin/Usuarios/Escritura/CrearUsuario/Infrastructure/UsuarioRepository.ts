@@ -1,5 +1,5 @@
-import { UsuarioDaoEntity } from "../../../../../../shared/Database/Dao/Usuarios/UsuarioDaoEntity";
-import { UsuariosModel } from "../../../../../../shared/Database/Squelize/Usuarios/UsuariosModel";
+import { UsuarioDaoEntity } from "../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity";
+import { UsuariosModel } from "../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel";
 import { UsuarioNuevo } from "../Domain/Entity/UsuarioNuevo";
 import { UsuarioRepositoryInterface } from "../Domain/Interfaces/UsuarioRepositoryInterface";
 

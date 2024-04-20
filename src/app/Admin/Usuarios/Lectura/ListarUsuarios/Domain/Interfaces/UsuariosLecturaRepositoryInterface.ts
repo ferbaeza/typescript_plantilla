@@ -1,4 +1,4 @@
-import { UsuarioDaoEntity } from "../../../../../../../shared/Database/Dao/Usuarios/UsuarioDaoEntity";
+import { UsuarioDaoEntity } from "../../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity";
 
 
 export interface UsuariosLecturaRepositoryInterface {

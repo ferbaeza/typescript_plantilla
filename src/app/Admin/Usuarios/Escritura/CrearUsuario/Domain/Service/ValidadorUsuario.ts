@@ -1,6 +1,6 @@
 import { UsuarioNuevo } from "../Entity/UsuarioNuevo";
 import { UsuarioRepositoryInterface } from "../Interfaces/UsuarioRepositoryInterface";
-import { UsuarioYaExisteConEseIdException, UsuarioYaExisteConEseMailException } from "../../../../../../../shared/Exceptions/Usuario/UsuarioException";
+import { UsuarioYaExisteConEseIdException, UsuarioYaExisteConEseMailException } from "../../../../../../Shared/Exceptions/Usuario/UsuarioException";
 
 
 

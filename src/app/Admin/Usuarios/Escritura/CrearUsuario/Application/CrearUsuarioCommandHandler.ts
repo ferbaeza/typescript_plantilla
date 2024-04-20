@@ -2,7 +2,7 @@ import { CrearUsuarioCommand } from "./CrearUsuarioCommand";
 import { UsuarioNuevo } from "../Domain/Entity/UsuarioNuevo";
 import { ValidadorUsuario } from "../Domain/Service/ValidadorUsuario";
 import { UsuarioRepositoryInterface } from "../Domain/Interfaces/UsuarioRepositoryInterface";
-import { UsuarioYaExisteConEseIdException, UsuarioYaExisteConEseMailException } from "../../../../../../shared/Exceptions/Usuario/UsuarioException";
+import { UsuarioYaExisteConEseIdException, UsuarioYaExisteConEseMailException } from "../../../../../Shared/Exceptions/Usuario/UsuarioException";
 
 
 export class CrearUsuarioCommandHandler {

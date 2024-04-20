@@ -1,4 +1,4 @@
-import { NoExistenUsuariosException } from "../../../../../../shared/Exceptions/Usuario/UsuarioException";
+import { NoExistenUsuariosException } from "../../../../../Shared/Exceptions/Usuario/UsuarioException";
 import { UsuariosLecturaPublicRepositoryInterface } from "../../Shared/Domain/Interfaces/UsuariosLecturaPublicRepositoryInterface";
 
 

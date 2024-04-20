@@ -1,12 +1,12 @@
 import path from 'path';
 import { Request, Response } from "express";
 import { LoginCommand } from "../../../Login/Application/LoginCommand";
-import { HttpStatusCode } from '../../../../../../shared/Utils/HttpCodes';
-import { JsonResponse } from "../../../../../../shared/Utils/JsonResponse";
-import { BaseController } from "../../../../../../shared/Base/BaseController";
+import { HttpStatusCode } from '../../../../../Shared/Utils/HttpCodes';
+import { JsonResponse } from "../../../../../Shared/Utils/JsonResponse";
+import { BaseController } from "../../../../../Shared/Base/BaseController";
 import { LoginCommandHandler } from "../../../Login/Application/LoginCommandHandler";
 import { ListarUsuariosPublicCommandHandler } from "../../../Lectura/ListarUsuarios/Application/ListarUsuariosPublicCommandHandler";
-import { NoExistenUsuariosException } from '../../../../../../shared/Exceptions/Usuario/UsuarioException';
+import { NoExistenUsuariosException } from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
 
 
 export class UsuariosPublicController extends BaseController {

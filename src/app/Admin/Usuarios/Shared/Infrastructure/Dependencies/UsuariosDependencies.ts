@@ -1,27 +1,34 @@
+import { UsuariosController } from "../Web/Usuarios.Controller";
+import { ValidadorUsuario } from "../../../Escritura/CrearUsuario/Domain/Service/ValidadorUsuario";
+import { UsuarioRepository } from "../../../Escritura/CrearUsuario/Infrastructure/UsuarioRepository";
 import { CrearUsuarioCommandHandler } from "../../../Escritura/CrearUsuario/Application/CrearUsuarioCommandHandler";
 import { ListarUsuariosCommandHandler } from "../../../Lectura/ListarUsuarios/Application/ListarUsuariosCommandHandler";
-import { UsuariosLecturaRepositoryInterface } from "../../../Lectura/Shared/Domain/Interfaces/UsuariosLecturaRepositoryInterface";
-import { UsuariosLecturaRepository } from "../../../Lectura/Shared/Infrastructure/UsuariosLecturaRepository";
-import { LoginCommandHandler } from "../../../Login/Application/LoginCommandHandler";
-import { UsuarioRepository } from "../../../Escritura/CrearUsuario/Infrastructure/UsuarioRepository";
-import { UsuariosController } from "../Web/Usuarios.Controller";
 import { UsuarioRepositoryInterface } from "../../../Escritura/CrearUsuario/Domain/Interfaces/UsuarioRepositoryInterface";
-import { ValidadorUsuario } from "../../../Escritura/CrearUsuario/Domain/Service/ValidadorUsuario";
+import { UsuariosLecturaRepositoryInterface } from "../../../Lectura/ListarUsuarios/Domain/Interfaces/UsuariosLecturaRepositoryInterface";
+import { UsuariosLecturaRepository } from "../../../Lectura/ListarUsuarios/Infrastructure/UsuariosLecturaRepository";
+import { ListarFichaUsuarioCommandHandler } from "../../../Lectura/FichaUsuario/Application/ListarFichaUsuarioCommandHandler";
+import { FichaUsuarioRepositoryInterface } from "../../../Lectura/FichaUsuario/Domain/Interfaces/FichaUsuarioRepositoryInterface";
+import { FichaUsuarioRepository } from "../../../Lectura/FichaUsuario/Infrastructure/FichaUsuarioRepository";
+import { EliminarUsuarioRepository } from "../../../Escritura/EliminarUsuario/Infrastructure/EliminarUsuarioRepository";
+import { EliminarUsuarioCommandHandler } from "../../../Escritura/EliminarUsuario/Application/EliminarUsuarioCommandHandler";
 
 //Repositories
 const usuarioRepository: UsuarioRepositoryInterface = new UsuarioRepository();
 const usuariosLecturaRepository: UsuariosLecturaRepositoryInterface = new UsuariosLecturaRepository();
+const fichaUsuarioRepositoryInterface: FichaUsuarioRepositoryInterface = new FichaUsuarioRepository();
+const eliminarUsuarioRepositoryInterface = new EliminarUsuarioRepository();
 //Services
 const validadorUsuario: ValidadorUsuario = new ValidadorUsuario(usuarioRepository);
-const loginCommandHandler: LoginCommandHandler = new LoginCommandHandler();
+//Casos de Uso
 const listarUsuariosCommandHandler: ListarUsuariosCommandHandler = new ListarUsuariosCommandHandler(usuariosLecturaRepository);
-
 const crearUsuarioCommandHandler: CrearUsuarioCommandHandler = new CrearUsuarioCommandHandler(usuarioRepository, validadorUsuario);
-
+const listarFichaUsuarioCommandHandler = new ListarFichaUsuarioCommandHandler(fichaUsuarioRepositoryInterface);
+const eliminarUsuarioCommandHandler = new EliminarUsuarioCommandHandler(eliminarUsuarioRepositoryInterface);
 
 
 export const loginController = new UsuariosController(
     listarUsuariosCommandHandler,
     crearUsuarioCommandHandler,
-    loginCommandHandler
+    listarFichaUsuarioCommandHandler,
+    eliminarUsuarioCommandHandler
 );
