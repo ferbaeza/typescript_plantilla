@@ -1,6 +1,3 @@
-
-
 export interface EliminarUsuarioRepositoryInterface {
-    eliminarusuario(idUsuario : string): any;
-
+  eliminarusuario(idUsuario: string): any;
 }

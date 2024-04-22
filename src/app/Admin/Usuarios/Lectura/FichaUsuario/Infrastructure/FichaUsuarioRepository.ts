@@ -5,27 +5,23 @@ import { UsuarioNoExisteException } from "../../../../../Shared/Exceptions/Usuar
 import { FichaUsuarioRepositoryInterface } from "../Domain/Interfaces/FichaUsuarioRepositoryInterface";
 
 export class FichaUsuarioRepository implements FichaUsuarioRepositoryInterface {
+  constructor() {}
 
-    constructor() {
+  public async getEntity(idUsuario: string): Promise<UsuarioDaoEntity> {
+    try {
+      const usuario = await UsuariosModel.findOne();
+      if (usuario === undefined || usuario === null) {
+        throw new UsuarioNoExisteException();
+      }
+
+      return this.usuarioDaoEntity(usuario);
+    } catch (error) {
+      console.log(error);
+      throw new RepositoryException();
     }
+  }
 
-    public async getEntity(idUsuario: string): Promise<UsuarioDaoEntity> {
-        try {
-            const usuario = await UsuariosModel.findOne();
-            if (usuario === undefined || usuario === null) {
-                throw new UsuarioNoExisteException();
-            }
-            
-            return this.usuarioDaoEntity(usuario);
-
-
-        } catch (error) {
-            console.log(error);
-            throw new RepositoryException();
-        }
-    }
-
-    private usuarioDaoEntity(usuario: any) {
-        return UsuarioDaoEntity.fromRepository(usuario);
-    }
+  private usuarioDaoEntity(usuario: any) {
+    return UsuarioDaoEntity.fromRepository(usuario);
+  }
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"BaseCommand.js","sourceRoot":"","sources":["../../../../src/app/Shared/Base/BaseCommand.ts"],"names":[],"mappings":";;;AAAA,+BAAoC;AAEpC,MAAsB,WAAW;IAI/B;QACE,IAAI,CAAC,SAAS,GAAG,IAAA,SAAM,GAAE,CAAC;QAC1B,IAAI,CAAC,SAAS,GAAG,IAAI,IAAI,EAAE,CAAC,QAAQ,EAAE,CAAC;IACzC,CAAC;CACF;AARD,kCAQC"}

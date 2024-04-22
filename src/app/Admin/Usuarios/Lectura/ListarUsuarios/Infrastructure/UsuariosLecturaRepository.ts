@@ -2,22 +2,22 @@ import { UsuarioDaoEntity } from "../../../../../Shared/Database/Dao/Usuarios/Us
 import { UsuariosModel } from "../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel";
 import { UsuariosLecturaRepositoryInterface } from "../Domain/Interfaces/UsuariosLecturaRepositoryInterface";
 
-export class UsuariosLecturaRepository implements UsuariosLecturaRepositoryInterface {
+export class UsuariosLecturaRepository
+  implements UsuariosLecturaRepositoryInterface
+{
+  constructor() {}
 
-    constructor() {
+  public async listar(): Promise<UsuarioDaoEntity[] | undefined> {
+    try {
+      const usuarios = await UsuariosModel.findAll();
+      return usuarios.map((usuario) => this.usuarioDaoEntity(usuario));
+    } catch (error) {
+      console.log(error);
     }
+    return undefined;
+  }
 
-    public async listar(): Promise<UsuarioDaoEntity [] | undefined> {
-        try {
-            const usuarios = await UsuariosModel.findAll();
-            return usuarios.map(usuario => this.usuarioDaoEntity(usuario));
-        } catch (error) {
-            console.log(error);
-        }
-        return undefined;
-    }
-
-    private usuarioDaoEntity(usuario: any) {
-        return UsuarioDaoEntity.fromRepository(usuario);
-    }
+  private usuarioDaoEntity(usuario: any) {
+    return UsuarioDaoEntity.fromRepository(usuario);
+  }
 }
