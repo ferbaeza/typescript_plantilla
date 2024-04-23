@@ -8,17 +8,12 @@ export class FichaUsuarioRepository implements FichaUsuarioRepositoryInterface {
   constructor() {}
 
   public async getEntity(idUsuario: string): Promise<UsuarioDaoEntity> {
-    try {
-      const usuario = await UsuariosModel.findOne();
-      if (usuario === undefined || usuario === null) {
-        throw new UsuarioNoExisteException();
-      }
+    const usuario = await UsuariosModel.findOne();
 
-      return this.usuarioDaoEntity(usuario);
-    } catch (error) {
-      console.log(error);
-      throw new RepositoryException();
+    if (usuario === undefined || usuario === null) {
+      throw new UsuarioNoExisteException();
     }
+    return this.usuarioDaoEntity(usuario);
   }
 
   private usuarioDaoEntity(usuario: any) {

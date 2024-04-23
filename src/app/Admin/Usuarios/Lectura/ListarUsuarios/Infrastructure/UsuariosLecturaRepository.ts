@@ -6,13 +6,8 @@ export class UsuariosLecturaRepository implements UsuariosLecturaRepositoryInter
   constructor() {}
 
   public async listar(): Promise<UsuarioDaoEntity[] | undefined> {
-    try {
-      const usuarios = await UsuariosModel.findAll();
-      return usuarios.map(usuario => this.usuarioDaoEntity(usuario));
-    } catch (error) {
-      console.log(error);
-    }
-    return undefined;
+    const usuarios = await UsuariosModel.findAll();
+    return usuarios.map(usuario => this.usuarioDaoEntity(usuario));
   }
 
   private usuarioDaoEntity(usuario: any) {
