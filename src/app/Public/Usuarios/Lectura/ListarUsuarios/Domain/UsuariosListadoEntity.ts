@@ -1,6 +1,6 @@
 export class UsuariosListadoEntity {
 
-    constructor(
+  constructor(
         public readonly id: string,
         public readonly nombre: string,
         public readonly email: string,
@@ -8,12 +8,13 @@ export class UsuariosListadoEntity {
     ) {
     }
 
-    static fromRepository(model: any) {
-        return new UsuariosListadoEntity(
-            model.id,
-            model.nombre,
-            model.email,
-            model.activo ?? false,
-        );
-    }
+  static fromRepository(model: any) {
+    return new UsuariosListadoEntity(
+        model.id,
+        model.nombre,
+        model.email,
+        model.activo ?? false,
+    );
+  }
 }
+

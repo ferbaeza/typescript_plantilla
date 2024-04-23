@@ -1,12 +1,11 @@
-import { Server } from './Server';
-import { port } from '../Config/AppConfig';
+import { port } from "../Config/AppConfig";
+import { Server } from "./Server";
 
 export class BackendApp {
+  server?: Server;
 
-    server?: Server;
-
-    async start(): Promise<void> {
-        this.server = new Server(port);
-        return this.server.listen();
-    }
+  async start(): Promise<void> {
+    this.server = new Server(port);
+    this.server.listen();
+  }
 }

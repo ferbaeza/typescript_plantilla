@@ -1,17 +1,17 @@
-import { Command } from '../../../../Shared/Bus/Domain/Command';
+import { Command } from "../../../../Shared/Bus/Domain/Command";
 
 type Params = {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 };
 
 export class LoginCommand extends Command {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 
-    constructor(params: Params) {
-        super();
-        this.email = params.email;
-        this.password = params.password;
-    }
+  constructor(params: Params) {
+    super();
+    this.email = params.email;
+    this.password = params.password;
+  }
 }

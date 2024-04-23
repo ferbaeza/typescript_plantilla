@@ -1,19 +1,16 @@
-import { Command } from './Command';
+import { Command } from "./Command";
 
 export class CommandBus {
-  constructor() {
-  }
-
   public execute(command: Command) {
-    console.log('command', command);
+    console.log("command", command);
     this.getFile(command);
   }
 
-  private async dispatch(command: Command) {
-    const name = command + "Handler";
-    const handler = new (await import(`../../app/${name}`))[name]();
-    await handler.run(command);
-  }
+  // private async dispatch(command: Command) {
+  //   const name = command + "Handler";
+  //   const handler = new (await import(`../../app/${name}`))[name]();
+  //   await handler.run(command);
+  // }
 
   private async getFile(command: Command): Promise<void> {
     const nameClass = Command.name + "Handler";
