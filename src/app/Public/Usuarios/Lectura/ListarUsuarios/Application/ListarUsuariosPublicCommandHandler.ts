@@ -3,15 +3,18 @@ import { UsuariosLecturaPublicRepositoryInterface } from "../../Shared/Domain/In
 
 
 export class ListarUsuariosPublicCommandHandler {
-    constructor(protected readonly repository: UsuariosLecturaPublicRepositoryInterface) {
+    constructor(
+        protected readonly repository: UsuariosLecturaPublicRepositoryInterface
+    ) {
     }
     public async run() {
 
         const usuarios = await this.repository.listar();
-        if (usuarios === undefined || usuarios === null || usuarios.length === 0) {
+        if (!usuarios) {
             throw new NoExistenUsuariosException();
         }
+        console.log(usuarios);
 
-        return { usuarios: usuarios, total: usuarios.length };
+        return { total: usuarios.length , usuarios: usuarios };
     }
 }

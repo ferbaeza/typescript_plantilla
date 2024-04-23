@@ -1,10 +1,10 @@
 export class UsuariosListadoEntity {
 
     constructor(
-        id: string,
-        nombre: string,
-        email: string,
-        activo: boolean,
+        public readonly id: string,
+        public readonly nombre: string,
+        public readonly email: string,
+        public readonly activo: boolean,
     ) {
     }
 

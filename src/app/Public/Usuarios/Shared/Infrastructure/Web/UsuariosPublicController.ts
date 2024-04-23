@@ -6,14 +6,14 @@ import { JsonResponse } from "../../../../../Shared/Utils/JsonResponse";
 import { BaseController } from "../../../../../Shared/Base/BaseController";
 import { LoginCommandHandler } from "../../../Login/Application/LoginCommandHandler";
 import { ListarUsuariosPublicCommandHandler } from "../../../Lectura/ListarUsuarios/Application/ListarUsuariosPublicCommandHandler";
-import { NoExistenUsuariosException } from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
+import { NoExistenUsuariosException, UsuarioNoExisteException } from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
 
 
 export class UsuariosPublicController extends BaseController {
 
     constructor(
-        protected readonly listarUsuariosPublicCommandHandler: ListarUsuariosPublicCommandHandler,
         protected readonly loginCommandHandler: LoginCommandHandler,
+        protected readonly listarUsuariosPublicCommandHandler: ListarUsuariosPublicCommandHandler,
     ) {
         super();
     }
@@ -27,6 +27,9 @@ export class UsuariosPublicController extends BaseController {
         } catch (error) {
             if (error instanceof NoExistenUsuariosException) {
                 JsonResponse.error(response, error, error.message, path.basename(__filename), HttpStatusCode.NO_CONTENT);
+            }
+            if (error instanceof UsuarioNoExisteException){
+                JsonResponse.error(response, error, error.message, path.basename(__filename), HttpStatusCode.INTERNAL_SERVER_ERROR);
             }
         }
     }

@@ -8,6 +8,6 @@ const router = Router();
 router.use('/', RutasUsuarioAdmin);
 
 //Public
-router.use('/', RutasUsuarioPublic);
+router.use('/public', RutasUsuarioPublic);
 
 export default router;

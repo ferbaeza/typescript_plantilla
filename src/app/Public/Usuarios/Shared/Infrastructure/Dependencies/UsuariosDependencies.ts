@@ -14,6 +14,6 @@ const listarUsuariosCommandHandler: ListarUsuariosPublicCommandHandler = new Lis
 
 
 export const usuariosPublicController = new UsuariosPublicController(
+    loginCommandHandler,
     listarUsuariosCommandHandler,
-    loginCommandHandler
 );
