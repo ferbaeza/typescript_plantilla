@@ -1,7 +1,7 @@
-import { UsuarioDaoEntity } from '../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity';
-import { UsuariosModel } from '../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel';
-// import { UsuarioNuevo } from "../Domain/Entity/UsuarioNuevo";
 import { UsuarioRepositoryInterface } from '../Domain/Interfaces/UsuarioRepositoryInterface';
+import { UsuariosModel } from '../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel';
+import { UsuarioDaoEntity } from '../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity';
+import { RepositoryException } from '../../../../../Shared/Exceptions/Framework/FrameworExceptions';
 
 export class UsuarioRepository implements UsuarioRepositoryInterface {
   public async crear(usuario: any): Promise<any> {
@@ -9,34 +9,16 @@ export class UsuarioRepository implements UsuarioRepositoryInterface {
       const usuarioGuardado = await UsuariosModel.create(usuario);
       return this.usuarioDaoEntity(usuarioGuardado);
     } catch (error) {
-      console.log(error);
+      throw new RepositoryException();
     }
   }
 
   public async validarUsuario(specificacion: any): Promise<boolean> {
-    try {
-      const existe = await UsuariosModel.findOne({ where: specificacion });
-      if (existe) {
-        return true;
-      }
-      return false;
-    } catch (error) {
-      console.log(error);
-      return false;
+    const existe = await UsuariosModel.findOne({ where: specificacion });
+    if (existe) {
+      return true;
     }
-  }
-
-  public async validarEmail(email: string): Promise<boolean> {
-    try {
-      const existe = await UsuariosModel.findOne({ where: { email: email } });
-      if (existe) {
-        return true;
-      }
-      return false;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
+    return false;
   }
 
   private usuarioDaoEntity(usuario: any) {

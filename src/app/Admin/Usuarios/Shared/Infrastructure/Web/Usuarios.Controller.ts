@@ -18,6 +18,7 @@ import { ListarFichaUsuarioCommand } from '../../../Lectura/FichaUsuario/Applica
 import { ListarFichaUsuarioCommandHandler } from '../../../Lectura/FichaUsuario/Application/ListarFichaUsuarioCommandHandler';
 import { ListarUsuariosCommand } from '../../../Lectura/ListarUsuarios/Application/ListarUsuariosCommand';
 import { ListarUsuariosCommandHandler } from '../../../Lectura/ListarUsuarios/Application/ListarUsuariosCommandHandler';
+import { RepositoryException } from '../../../../../Shared/Exceptions/Framework/FrameworExceptions';
 
 export class UsuariosController extends BaseController {
   constructor(
@@ -50,9 +51,7 @@ export class UsuariosController extends BaseController {
   public async ListarFichaUsuarioCommand(request: Request, response: Response): Promise<void> {
     try {
       const { id } = request.params;
-      console.log(id);
       const command = new ListarFichaUsuarioCommand(id);
-      console.log(command);
       const usuarios = await this.listarFichaUsuarioCommandHandler.run(command);
       JsonResponse.send(response, { data: usuarios }, path.basename(__filename));
     } catch (error) {
@@ -99,15 +98,6 @@ export class UsuariosController extends BaseController {
         `Usuario ${nombre} con email ${email} creado correctamente`
       );
     } catch (error) {
-      if (error instanceof NoExistenUsuariosException) {
-        JsonResponse.error(
-          response,
-          error,
-          error.message,
-          path.basename(__filename),
-          HttpStatusCode.NO_CONTENT
-        );
-      }
       if (error instanceof UsuarioYaExisteConEseMailException) {
         JsonResponse.error(
           response,
@@ -118,6 +108,16 @@ export class UsuariosController extends BaseController {
         );
       }
       if (error instanceof UsuarioYaExisteConEseIdException) {
+        JsonResponse.error(
+          response,
+          error,
+          error.message,
+          path.basename(__filename),
+          HttpStatusCode.BAD_REQUEST
+        );
+      }
+
+      if (error instanceof RepositoryException) {
         JsonResponse.error(
           response,
           error,

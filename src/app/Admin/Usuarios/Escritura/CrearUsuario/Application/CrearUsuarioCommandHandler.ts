@@ -8,9 +8,9 @@ export class CrearUsuarioCommandHandler {
     protected readonly repository: UsuarioRepositoryInterface,
     protected readonly validadorUsuario: ValidadorUsuario
   ) {}
+
   async run(command: CrearUsuarioCommand) {
     const usuario = UsuarioNuevo.fromCommand(command);
-    console.log(usuario);
     await this.validadorUsuario.validar(usuario);
 
     return this.repository.crear(usuario);
