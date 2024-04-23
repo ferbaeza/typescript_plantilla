@@ -19,15 +19,13 @@ const interactive = new signale.Signale({ interactive: true });
 // Obtener del stage los js, vue, scss y css
 const getStagedFiles = () => {
   const result = shelljs.exec(
-    `git diff --cached --name-only --diff-filter=ACM | grep ".js$\\|.vue$\\|.scss$\\|.css$"`
+    `git diff --cached --name-only --diff-filter=ACM | grep ".js$\\|.vue$\\|.scss$\\|.css$"|.ts$\\"`
   );
-  console.log(result);
   return result.trim().split('\n');
 };
 
 // Ejecutar comprobacion de prettier
 async function runPrettier(files) {
-  console.log(files);
   interactive.pending('Corrigiendo estilos con Prettier...');
   const cli = `${BIN_PATH}/prettier --config ${path.resolve(
     ROOT_PATH,
