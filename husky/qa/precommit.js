@@ -9,7 +9,7 @@ const signale = require('signale');
 
 const ROOT_PATH = path.resolve(__dirname, '../../');
 const BIN_PATH = path.resolve(ROOT_PATH, 'node_modules/.bin');
-const ESLINT_ALLOWED = ['js', 'vue'];
+const ESLINT_ALLOWED = ['js', 'ts'];
 
 shelljs.config.silent = true;
 
