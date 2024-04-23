@@ -1,15 +1,10 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from 'sequelize';
 
-import { dbConfig } from "../../Config/AppConfig";
+import { dbConfig } from '../../Config/AppConfig';
 
-const sequelize = new Sequelize(
-  dbConfig.database,
-  dbConfig.user,
-  dbConfig.password,
-  {
-    host: dbConfig.host,
-    dialect: "postgres",
-  }
-);
+const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
+  host: dbConfig.host,
+  dialect: 'postgres'
+});
 
 export { sequelize };

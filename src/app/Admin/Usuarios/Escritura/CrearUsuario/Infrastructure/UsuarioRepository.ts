@@ -1,7 +1,7 @@
-import { UsuarioDaoEntity } from "../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity";
-import { UsuariosModel } from "../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel";
+import { UsuarioDaoEntity } from '../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity';
+import { UsuariosModel } from '../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel';
 // import { UsuarioNuevo } from "../Domain/Entity/UsuarioNuevo";
-import { UsuarioRepositoryInterface } from "../Domain/Interfaces/UsuarioRepositoryInterface";
+import { UsuarioRepositoryInterface } from '../Domain/Interfaces/UsuarioRepositoryInterface';
 
 export class UsuarioRepository implements UsuarioRepositoryInterface {
   public async crear(usuario: any): Promise<any> {

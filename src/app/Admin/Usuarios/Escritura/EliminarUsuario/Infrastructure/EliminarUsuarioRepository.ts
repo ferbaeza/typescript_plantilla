@@ -1,12 +1,10 @@
 // import { UsuarioDaoEntity } from "../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity";
-import { UsuariosModel } from "../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel";
-import { RepositoryException } from "../../../../../Shared/Exceptions/Framework/FrameworExceptions";
+import { UsuariosModel } from '../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel';
+import { RepositoryException } from '../../../../../Shared/Exceptions/Framework/FrameworExceptions';
 // import { UsuarioNoExisteException } from "../../../../../Shared/Exceptions/Usuario/UsuarioException";
-import { EliminarUsuarioRepositoryInterface } from "../Domain/Interfaces/EliminarUsuarioRepositoryInterface";
+import { EliminarUsuarioRepositoryInterface } from '../Domain/Interfaces/EliminarUsuarioRepositoryInterface';
 
-export class EliminarUsuarioRepository
-  implements EliminarUsuarioRepositoryInterface
-{
+export class EliminarUsuarioRepository implements EliminarUsuarioRepositoryInterface {
   constructor() {}
 
   public async eliminarusuario(idUsuario: string): Promise<any> {

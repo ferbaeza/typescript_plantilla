@@ -1,8 +1,8 @@
-import { UsuarioDaoEntity } from "../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity";
-import { UsuariosModel } from "../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel";
-import { RepositoryException } from "../../../../../Shared/Exceptions/Framework/FrameworExceptions";
-import { UsuarioNoExisteException } from "../../../../../Shared/Exceptions/Usuario/UsuarioException";
-import { FichaUsuarioRepositoryInterface } from "../Domain/Interfaces/FichaUsuarioRepositoryInterface";
+import { UsuarioDaoEntity } from '../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity';
+import { UsuariosModel } from '../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel';
+import { RepositoryException } from '../../../../../Shared/Exceptions/Framework/FrameworExceptions';
+import { UsuarioNoExisteException } from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
+import { FichaUsuarioRepositoryInterface } from '../Domain/Interfaces/FichaUsuarioRepositoryInterface';
 
 export class FichaUsuarioRepository implements FichaUsuarioRepositoryInterface {
   constructor() {}

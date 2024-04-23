@@ -1,4 +1,4 @@
-import { sequelize } from "./Database";
+import { sequelize } from './Database';
 
 export const dataBaseConnect = async () => {
   try {

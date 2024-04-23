@@ -1,6 +1,6 @@
-import { Response } from "express";
+import { Response } from 'express';
 
-import { HttpStatusCode } from "./HttpCodes";
+import { HttpStatusCode } from './HttpCodes';
 
 export class JsonResponse {
   public static send(res: Response, data: object, mensaje: string): void {
@@ -8,7 +8,7 @@ export class JsonResponse {
       data,
       mensaje,
       statusCode: HttpStatusCode.OK,
-      success: true,
+      success: true
     };
     res.status(HttpStatusCode.OK).json(response);
   }
@@ -25,7 +25,7 @@ export class JsonResponse {
       message,
       module,
       statusCode: code ?? HttpStatusCode.INTERNAL_SERVER_ERROR,
-      success: false,
+      success: false
     };
     res.status(code ?? HttpStatusCode.INTERNAL_SERVER_ERROR).json(response);
   }

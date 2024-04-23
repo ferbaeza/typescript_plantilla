@@ -1,6 +1,6 @@
-import { BaseException } from "../BaseException";
+import { BaseException } from '../BaseException';
 
-export const repositoryException = "repository Exception";
+export const repositoryException = 'repository Exception';
 
 export class RepositoryException extends BaseException {
   constructor() {

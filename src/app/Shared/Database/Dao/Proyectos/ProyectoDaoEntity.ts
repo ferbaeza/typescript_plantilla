@@ -14,7 +14,7 @@ export class ProyectoDaoEntity {
       model.titulo,
       model.descripcion,
       model.puntuacion ?? 0,
-      model.url ?? "",
+      model.url ?? '',
       model.usuario_id
     );
   }

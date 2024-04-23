@@ -1,4 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config';
 
 export const port: number = Number(process.env.PORT) ?? 3000;
 
@@ -13,6 +13,6 @@ export const dbConfig = {
     max: 5,
     min: 0,
     acquire: 30000,
-    idle: 10000,
-  },
+    idle: 10000
+  }
 };

@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
-import { CrearUsuarioCommand } from "../../Application/CrearUsuarioCommand";
+import { CrearUsuarioCommand } from '../../Application/CrearUsuarioCommand';
 
 export class UsuarioNuevo {
   constructor(

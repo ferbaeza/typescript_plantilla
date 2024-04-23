@@ -1,8 +1,8 @@
-import { Command } from "./Command";
+import { Command } from './Command';
 
 export class CommandBus {
   public execute(command: Command) {
-    console.log("command", command);
+    console.log('command', command);
     this.getFile(command);
   }
 
@@ -13,7 +13,7 @@ export class CommandBus {
   // }
 
   private async getFile(command: Command): Promise<void> {
-    const nameClass = Command.name + "Handler";
+    const nameClass = Command.name + 'Handler';
     const file = await import(`../application/${nameClass}`); // Remove unnecessary path
     const handler = new file[nameClass](); // Remove unnecessary path
     handler.run(command);

@@ -1,22 +1,22 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
-import { sequelize } from "../../Config/Database";
+import { sequelize } from '../../Config/Database';
 
 export const UsuariosProyectosModel = sequelize.define(
-  "usuarios_proyectos",
+  'usuarios_proyectos',
   {
     usuario_id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
     },
     proyecto_id: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
-    },
+      primaryKey: true
+    }
   },
   {
-    timestamps: false,
+    timestamps: false
   }
 );

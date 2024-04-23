@@ -1,13 +1,8 @@
-import { NoExistenUsuariosException } from "../../../../../Shared/Exceptions/Usuario/UsuarioException";
-import { UsuariosLecturaPublicRepositoryInterface } from "../../Shared/Domain/Interfaces/UsuariosLecturaPublicRepositoryInterface";
+import { NoExistenUsuariosException } from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
+import { UsuariosLecturaPublicRepositoryInterface } from '../../Shared/Domain/Interfaces/UsuariosLecturaPublicRepositoryInterface';
 
 export class ListarUsuariosPublicCommandHandler {
-  constructor(
-    protected readonly repository: UsuariosLecturaPublicRepositoryInterface
-  ) {
-    
-  }
-
+  constructor(protected readonly repository: UsuariosLecturaPublicRepositoryInterface) {}
 
   public async run() {
     const usuarios = await this.repository.listar();

@@ -1,4 +1,4 @@
-import { BackendApp } from "./app/Shared/Core/App";
+import { BackendApp } from './app/Shared/Core/App';
 
 try {
   new BackendApp().start();

@@ -1,4 +1,4 @@
-import { BaseCommand } from "../../../../../Shared/Base/BaseCommand";
+import { BaseCommand } from '../../../../../Shared/Base/BaseCommand';
 
 export class CrearUsuarioCommand extends BaseCommand {
   constructor(

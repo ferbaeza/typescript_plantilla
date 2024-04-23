@@ -1,5 +1,5 @@
-import { port } from "../Config/AppConfig";
-import { Server } from "./Server";
+import { port } from '../Config/AppConfig';
+import { Server } from './Server';
 
 export class BackendApp {
   server?: Server;

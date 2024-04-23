@@ -1,26 +1,26 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
-import { sequelize } from "../../Config/Database";
+import { sequelize } from '../../Config/Database';
 
-export const ProyectosModel = sequelize.define("proyectos", {
+export const ProyectosModel = sequelize.define('proyectos', {
   id: {
     type: DataTypes.STRING,
-    primaryKey: true,
+    primaryKey: true
   },
   titulo: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   descripcion: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: true
   },
   puntuacion: {
     type: DataTypes.INTEGER,
-    allowNull: true,
+    allowNull: true
   },
   url: {
     type: DataTypes.STRING,
-    allowNull: true,
-  },
+    allowNull: true
+  }
 });
