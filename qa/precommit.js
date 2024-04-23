@@ -2,10 +2,10 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-await-in-loop */
 
-const chalk = require('chalk');
-const shelljs = require('shelljs');
-const path = require('path');
-const signale = require('signale');
+import chalk from 'chalk';
+import path from 'path';
+import shelljs from 'shelljs';
+import signale from 'signale';
 
 const ROOT_PATH = path.resolve(__dirname, '../../');
 const BIN_PATH = path.resolve(ROOT_PATH, 'node_modules/.bin');

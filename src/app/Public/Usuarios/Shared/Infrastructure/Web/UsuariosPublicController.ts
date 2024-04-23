@@ -1,15 +1,13 @@
-import path from 'path';
 import { Request, Response } from 'express';
-import { HttpStatusCode } from '../../../../../Shared/Utils/HttpCodes';
-import { LoginCommand } from '../../../Login/Application/LoginCommand';
-import { JsonResponse } from '../../../../../Shared/Utils/JsonResponse';
+import path from 'path';
+
 import { BaseController } from '../../../../../Shared/Base/BaseController';
-import { LoginCommandHandler } from '../../../Login/Application/LoginCommandHandler';
-import {
-  NoExistenUsuariosException,
-  UsuarioNoExisteException
-} from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
+import { NoExistenUsuariosException } from '../../../../../Shared/Exceptions/Usuario/UsuarioException';
+import { HttpStatusCode } from '../../../../../Shared/Utils/HttpCodes';
+import { JsonResponse } from '../../../../../Shared/Utils/JsonResponse';
 import { ListarUsuariosPublicCommandHandler } from '../../../Lectura/ListarUsuarios/Application/ListarUsuariosPublicCommandHandler';
+import { LoginCommand } from '../../../Login/Application/LoginCommand';
+import { LoginCommandHandler } from '../../../Login/Application/LoginCommandHandler';
 
 export class UsuariosPublicController extends BaseController {
   constructor(
@@ -19,7 +17,7 @@ export class UsuariosPublicController extends BaseController {
     super();
   }
 
-  public async listar(request: Request, response: Response): Promise<any> {
+  public async listar(request: Request, response: Response): Promise<void> {
     try {
       const usuarios = await this.listarUsuariosPublicCommandHandler.run();
       JsonResponse.send(response, { data: usuarios }, path.basename(__filename));

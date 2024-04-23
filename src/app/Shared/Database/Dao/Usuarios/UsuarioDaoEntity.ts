@@ -21,7 +21,7 @@ export class UsuarioDaoEntity {
     this.activo = activo;
     this.verificado = verificado;
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static fromRepository(model: any) {
     return new UsuarioDaoEntity(
       model.id,

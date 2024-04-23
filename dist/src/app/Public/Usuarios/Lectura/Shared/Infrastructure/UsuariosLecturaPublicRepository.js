@@ -10,12 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuariosLecturaPublicRepository = void 0;
-const UsuariosListadoEntity_1 = require("../../ListarUsuarios/Domain/UsuariosListadoEntity");
 const UsuariosModel_1 = require("../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel");
+const UsuariosListadoEntity_1 = require("../../ListarUsuarios/Domain/UsuariosListadoEntity");
 class UsuariosLecturaPublicRepository {
     listar() {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarios = yield UsuariosModel_1.UsuariosModel.findAll();
+            console.log('usuarios', typeof usuarios);
             return usuarios.map(usuario => this.usuarioDaoEntity(usuario));
         });
     }

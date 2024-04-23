@@ -5,11 +5,9 @@ import { UsuarioNoExisteException } from '../../../../../Shared/Exceptions/Usuar
 import { FichaUsuarioRepositoryInterface } from '../Domain/Interfaces/FichaUsuarioRepositoryInterface';
 
 export class FichaUsuarioRepository implements FichaUsuarioRepositoryInterface {
-  constructor() {}
-
   public async getEntity(idUsuario: string): Promise<UsuarioDaoEntity> {
     try {
-      const usuario = await UsuariosModel.findOne();
+      const usuario = await UsuariosModel.findByPk(idUsuario);
       if (usuario === undefined || usuario === null) {
         throw new UsuarioNoExisteException();
       }
@@ -20,7 +18,7 @@ export class FichaUsuarioRepository implements FichaUsuarioRepositoryInterface {
       throw new RepositoryException();
     }
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private usuarioDaoEntity(usuario: any) {
     return UsuarioDaoEntity.fromRepository(usuario);
   }

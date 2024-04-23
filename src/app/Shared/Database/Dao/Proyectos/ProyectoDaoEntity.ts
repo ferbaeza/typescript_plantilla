@@ -7,7 +7,7 @@ export class ProyectoDaoEntity {
     public readonly url: string,
     public readonly usuarioId: string
   ) {}
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static fromRepository(model: any) {
     return new ProyectoDaoEntity(
       model.id,

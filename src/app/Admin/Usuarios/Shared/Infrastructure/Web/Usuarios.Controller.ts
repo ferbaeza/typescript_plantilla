@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import path from 'path';
 
 import { BaseController } from '../../../../../Shared/Base/BaseController';
+import { RepositoryException } from '../../../../../Shared/Exceptions/Framework/FrameworExceptions';
 import {
   NoExistenUsuariosException,
   UsuarioNoExisteException,
@@ -18,7 +19,6 @@ import { ListarFichaUsuarioCommand } from '../../../Lectura/FichaUsuario/Applica
 import { ListarFichaUsuarioCommandHandler } from '../../../Lectura/FichaUsuario/Application/ListarFichaUsuarioCommandHandler';
 import { ListarUsuariosCommand } from '../../../Lectura/ListarUsuarios/Application/ListarUsuariosCommand';
 import { ListarUsuariosCommandHandler } from '../../../Lectura/ListarUsuarios/Application/ListarUsuariosCommandHandler';
-import { RepositoryException } from '../../../../../Shared/Exceptions/Framework/FrameworExceptions';
 
 export class UsuariosController extends BaseController {
   constructor(
@@ -30,7 +30,7 @@ export class UsuariosController extends BaseController {
     super();
   }
 
-  public async listar(request: Request, response: Response): Promise<any> {
+  public async listar(request: Request, response: Response): Promise<void> {
     try {
       const command = new ListarUsuariosCommand();
       const usuarios = await this.listarUsuariosCommandHandler.run(command);
@@ -86,7 +86,7 @@ export class UsuariosController extends BaseController {
     }
   }
 
-  public async crearUsuario(request: Request, response: Response): Promise<any> {
+  public async crearUsuario(request: Request, response: Response): Promise<void> {
     try {
       const { id, nombre, email, password } = request.body;
 

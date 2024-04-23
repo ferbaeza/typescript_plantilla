@@ -13,13 +13,13 @@ exports.EliminarUsuarioRepository = void 0;
 const UsuariosModel_1 = require("../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel");
 const FrameworExceptions_1 = require("../../../../../Shared/Exceptions/Framework/FrameworExceptions");
 class EliminarUsuarioRepository {
-    constructor() { }
     eliminarusuario(idUsuario) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const usuario = yield UsuariosModel_1.UsuariosModel.findByPk(idUsuario);
                 if (usuario) {
-                    return usuario.destroy();
+                    usuario.destroy();
+                    return true;
                 }
                 return false;
             }

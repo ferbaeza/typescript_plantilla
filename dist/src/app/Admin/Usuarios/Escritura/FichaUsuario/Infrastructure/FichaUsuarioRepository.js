@@ -15,11 +15,10 @@ const UsuariosModel_1 = require("../../../../../Shared/Database/Squelize/Usuario
 const FrameworExceptions_1 = require("../../../../../Shared/Exceptions/Framework/FrameworExceptions");
 const UsuarioException_1 = require("../../../../../Shared/Exceptions/Usuario/UsuarioException");
 class FichaUsuarioRepository {
-    constructor() { }
     getEntity(idUsuario) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const usuario = yield UsuariosModel_1.UsuariosModel.findOne();
+                const usuario = yield UsuariosModel_1.UsuariosModel.findByPk(idUsuario);
                 if (usuario === undefined || usuario === null) {
                     throw new UsuarioException_1.UsuarioNoExisteException();
                 }

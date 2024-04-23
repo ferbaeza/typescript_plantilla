@@ -13,7 +13,6 @@ exports.UsuariosLecturaRepository = void 0;
 const UsuarioDaoEntity_1 = require("../../../../../Shared/Database/Dao/Usuarios/UsuarioDaoEntity");
 const UsuariosModel_1 = require("../../../../../Shared/Database/Squelize/Usuarios/UsuariosModel");
 class UsuariosLecturaRepository {
-    constructor() { }
     listar() {
         return __awaiter(this, void 0, void 0, function* () {
             const usuarios = yield UsuariosModel_1.UsuariosModel.findAll();
