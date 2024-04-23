@@ -1,0 +1,1 @@
+{"version":3,"file":"Database.js","sourceRoot":"","sources":["../../../../../../src/app/Shared/Database/Config/Database.ts"],"names":[],"mappings":";;;AAAA,yCAAsC;AAEtC,sDAAkD;AAElD,MAAM,SAAS,GAAG,IAAI,qBAAS,CAAC,oBAAQ,CAAC,QAAQ,EAAE,oBAAQ,CAAC,IAAI,EAAE,oBAAQ,CAAC,QAAQ,EAAE;IACnF,IAAI,EAAE,oBAAQ,CAAC,IAAI;IACnB,OAAO,EAAE,UAAU;CACpB,CAAC,CAAC;AAEM,8BAAS"}

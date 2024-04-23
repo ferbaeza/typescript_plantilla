@@ -1,3 +1,42 @@
+
+export const suma = (a: number, b: number) => a + b;
+describe("OneTest", () => {
+    it("should return 3", () => {
+        expect(suma(1, 2)).toBe(3);
+    });
+})
+
+const succesCases =[
+    [1,2,3],
+    [2,2,4],
+    [3,2,5]
+]
+
+describe.each(succesCases)("OneTest", (a, b, expected) => {
+    it(`should return ${expected}`, () => {
+        expect(suma(a, b)).toBe(expected);
+    });
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // describe("InMemoryUserRepository", () => {
 //     let repository: InMemoryUserRepository;
 
