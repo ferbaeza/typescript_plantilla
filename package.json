@@ -6,27 +6,28 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "dev:ts": "tsc-watch --onSuccess \"ts-node dist/index.js\"",
-    "build": "tsc -p tsconfig.build.json",
-    "compile": "tsc",
     "start": "node dist/index.js",
     "reinstall": "rm -rf node_modules && rm -rf yarn.lock && yarn install",
     "prepare": "husky install",
     "seeder": "ts-node src/app/Shared/Seeder/DatabaseSeeder.ts",
     "test": "jest",
     "test:unit": "NODE_ENV=test jest --coverage",
-    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts",
+    "lint": "eslint --ignore-path .eslintignore . --ext .js,.ts",
     "lint:fix": "yarn run lint -- --fix",
-
-    "pre-commit" :"yarn run lint-staged",
-    "lint-staged": "console.log('lint-staged')",
-
     "format": "prettier --write ./src/**/*.{js,json,md,yaml,ts}",
     "format-all": "prettier --write ./src/**/*.{js,vue,scss,css,html,json,md,yaml,ts}",
-    "build:prod": "yarn validate-typescript && yarn run build:clean && yarn run generate:dist",
+    
+    "pre-commit" :"yarn run build:prepare && yarn run build:prod",
+
+    "build:prepare":"yarn run format && yarn run lint:fix",
+    "build:prod": "yarn validate-typescript && yarn run build:clean && yarn run build",
+    
+
     "validate-typescript": "tsc -p tsconfig.json",
     "build:clean": "rimraf dist; exit 0",
-    "build:tsc": "tsc -p tsconfig.json",
-    "generate:dist": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json"
+    "build": "tsc -p tsconfig.build.json",
+    "compile": "tsc"
+    
   },
   "lint-staged": {
     "*.(js|ts)": [

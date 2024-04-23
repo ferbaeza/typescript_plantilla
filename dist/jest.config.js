@@ -1,19 +1,14 @@
 "use strict";
 module.exports = {
     preset: 'ts-jest',
-    testEnvironment: "node",
+    testEnvironment: 'node',
     transform: {
-        "^.+\\.ts$": "ts-jest"
+        '^.+\\.ts$': 'ts-jest'
     },
-    moduleFileExtensions: [
-        "ts",
-        "js"
-    ],
-    testMatch: [
-        "**/__tests__/**/*.test.ts"
-    ],
-    roots: ['<rootDir>/s/tests'],
+    moduleFileExtensions: ['ts', 'js'],
+    testMatch: ['**/__tests__/**/*.test.ts'],
+    roots: ['<rootDir>/src/tests'],
     collectCoverage: true,
-    coverageReporters: ['json', 'lcov', 'text', 'clover'],
+    coverageReporters: ['json', 'lcov', 'text', 'clover']
 };
 //# sourceMappingURL=jest.config.js.map
