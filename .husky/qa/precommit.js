@@ -21,12 +21,13 @@ const getStagedFiles = () => {
   const result = shelljs.exec(
     `git diff --cached --name-only --diff-filter=ACM | grep ".js$\\|.vue$\\|.scss$\\|.css$"`
   );
-
+  console.log(result);
   return result.trim().split('\n');
 };
 
 // Ejecutar comprobacion de prettier
 async function runPrettier(files) {
+  console.log(files);
   interactive.pending('Corrigiendo estilos con Prettier...');
   const cli = `${BIN_PATH}/prettier --config ${path.resolve(
     ROOT_PATH,
