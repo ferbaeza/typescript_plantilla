@@ -1,0 +1,3 @@
+{
+    "**/*.{js,jxs,ts,txs,md,json}" : ["eslint"]
+}
