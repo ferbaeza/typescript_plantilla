@@ -15,6 +15,9 @@
     "test:unit": "NODE_ENV=test jest --coverage",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.ts",
     "lint:fix": "yarn run lint -- --fix",
+
+    "pre-commit" :"node ./qa/precommit.js ",
+
     "format": "prettier --write ./src/**/*.{js,json,md,yaml,ts}",
     "format-all": "prettier --write ./src/**/*.{js,vue,scss,css,html,json,md,yaml,ts}",
     "build:prod": "yarn validate-typescript && yarn run build:clean && yarn run generate:dist",
